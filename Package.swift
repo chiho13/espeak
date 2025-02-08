@@ -50,7 +50,3 @@ let package = Package(
         ),
     ]
 )
-
-$(SRCROOT)/voicenotes/Espeak/libespeak-ng/include
-$(SRCROOT)/voicenotes/espeak-ng/libespeak-ng/_repo/src/include
-$(SRCROOT)/YourApp/onnxruntime/include     // your existing onnxruntime path
