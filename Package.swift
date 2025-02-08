@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "espeak-ng",
+  name: "espeak ",
   products: [
     .library(name: "libespeak-ng", targets: ["libespeak-ng"]),
     .library(name: "espeak-ng-data", targets: ["data"]),
