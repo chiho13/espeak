@@ -115,10 +115,20 @@ static int SubstitutePhonemes(PHONEME_LIST *plist_out)
         
 		
 		// copy phoneme into the output list
-		memcpy(&plist_out[n_plist_out], plist2, sizeof(PHONEME_LIST2));
-		plist_out[n_plist_out].ph = phoneme_tab[plist2->phcode];
-		plist_out[n_plist_out].type = plist_out[n_plist_out].ph->type;
-		n_plist_out++;
+		// memcpy(&plist_out[n_plist_out], plist2, sizeof(PHONEME_LIST2));
+		// plist_out[n_plist_out].ph = phoneme_tab[plist2->phcode];
+		// plist_out[n_plist_out].type = plist_out[n_plist_out].ph->type;
+		// n_plist_out++;
+
+		   memcpy(&plist_out[n_plist_out], plist2, sizeof(PHONEME_LIST2));
+        if (plist2->phcode < N_PHONEME_TAB && 
+            phoneme_tab[plist2->phcode] != NULL) {  // Validate phoneme table entry
+            plist_out[n_plist_out].ph = phoneme_tab[plist2->phcode];
+            if (plist_out[n_plist_out].ph != NULL) {  // Add NULL check before accessing ph
+                plist_out[n_plist_out].type = plist_out[n_plist_out].ph->type;
+                n_plist_out++;
+            }
+        }
 	}
 	return n_plist_out;
 }
