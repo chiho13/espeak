@@ -861,8 +861,9 @@ ESPEAK_API const char *espeak_TextToPhonemes(const void **textptr, int textmode,
 	if (p_decoder == NULL)
 		p_decoder = create_text_decoder();
 
-	if (text_decoder_decode_string_multibyte(p_decoder, *textptr, translator->encoding, textmode) != ENS_OK)
-		return NULL;
+if (text_decoder_decode_string_multibyte(p_decoder, *textptr, p_decoder->translator->encoding, textmode) != ENS_OK)
+    return NULL;
+	
 
 	TranslateClause(translator, NULL, NULL);
 	*textptr = text_decoder_get_buffer(p_decoder);
