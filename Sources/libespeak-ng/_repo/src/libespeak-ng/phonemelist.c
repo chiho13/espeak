@@ -110,6 +110,10 @@ static int SubstitutePhonemes(PHONEME_LIST *plist_out)
 			}
 		}
 
+		   // Add bounds check before copying
+        if (n_plist_out >= N_PHONEME_LIST) break;
+        
+		
 		// copy phoneme into the output list
 		memcpy(&plist_out[n_plist_out], plist2, sizeof(PHONEME_LIST2));
 		plist_out[n_plist_out].ph = phoneme_tab[plist2->phcode];
